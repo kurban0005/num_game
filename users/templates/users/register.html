@@ -1,0 +1,16 @@
+{% extends 'num_game_app/base.html' %}
+
+{% block content %}
+<div class="card bg-dark text-light">
+    <div class="card-body">
+        <h5>Регистрация</h5>
+        <br/>
+        <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit" class="btn btn-outline-success">Подтвердить</button>
+            <input type="hidden" name="next" value="{% url 'num_game_app:index' %}" />
+        </form>
+    </div>
+</div>
+{% endblock content %}

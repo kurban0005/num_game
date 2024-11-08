@@ -1,0 +1,19 @@
+{% extends "num_game_app/base.html" %}
+{% block content %}
+<div class="card bg-dark text-light col-sm-5">
+    <div class="card-body">
+        <h5><p class="card-text">ПОБЕДА</p></h5>
+        <p class="card-text text-muted">
+            Задуманное число:
+            <big><big><big><big class="text-success">
+                {{game.guess_num}}
+            </big></big></big></big>
+        </p>
+        <p class="card-text text-muted">
+            Количество ходов:
+            <big class="text-danger">{{game.num_rounds}}</big>
+        </p>
+        <a class="btn btn-outline-success" href="{% url 'num_game_app:index' %}">Выбор новой игры</a>
+    </div>
+</div>
+{% endblock content %}

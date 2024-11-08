@@ -1,0 +1,26 @@
+{% extends "num_game_app/base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-5">
+    <div class="card bg-dark">
+      <div class="card-body bg-dark text-light">
+        <p  class="card-text">Режим игры в которой:</p>
+        <h5 class="card-title">ВЫ ОТГАДЫВАЕТЕ</h5>
+        <p  class="card-text">число задуманное компьютером</p>
+        <a class="btn btn-outline-success" href="{% url 'num_game_app:start_user_play' %}">Новая игра</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5">
+    <div class="card bg-dark">
+      <div class="card-body bg-dark text-light">
+        <p class="card-text">Режим игры в которой:</p>
+        <h5 class="card-title">ВЫ ЗАГАДЫВАЕТЕ</h5>
+        <p class="card-text">число, а компьютер должен его отгадать</p>
+        <a class="btn btn-outline-success"
+                href="{% url 'num_game_app:start_ai_play' %}">Новая игра</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

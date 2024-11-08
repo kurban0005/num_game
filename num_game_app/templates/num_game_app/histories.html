@@ -1,0 +1,78 @@
+{% extends "num_game_app/base.html" %}
+
+{% block content %}
+<div>
+    <a class="btn btn-dark" href="{% url 'num_game_app:index' %}">На главную страницу</a>
+    <br/><br/>
+</div>
+
+<div class="row">
+    <div class="col-sm-5">
+        <div class="card bg-dark text-light">
+            <div class="card-body bg-dark">
+                <h4 class="card-title">ВЫ ОТГАДЫВАЛИ :</h4>
+                <div><p></p></div>
+                <ul>
+                    {% for game in games_player %}
+                    <li>
+                        <div class="card bg-dark">
+                            <div class="card-header"><h5>№ {{ game.id }}. {{ game.date_add|date:'M d, Y H:i' }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Количество раундов : {{game.num_rounds}}</p>
+                                <p class="card-text">Размер игры : {{game.max_num}}</p>
+                                <p class="card-text">Загаданное число: {{game.guess_num}}</p>
+                                {% if game.is_finished %}
+                                <p class="card-text text-success">ЗАКОНЧЕНА</p>
+                                {% else %}
+                                <p class="card-text text-danger">НЕ ЗАКОНЧЕНА</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br/>
+                    </li>
+                    <div><p></p></div>
+                    {% empty %}
+                    <li>Список пуст</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-5">
+        <div class="card bg-dark text-light">
+            <div class="card-body">
+                <h4 class="card-title">ВЫ ЗАГАДЫВАЛИ :</h4>
+                <div><p></p></div>
+                <ul>
+                    {% for game in games_ai %}
+                    <li>
+                        <div class="card bg-dark">
+                            <div class="card-header"><h5>№ {{ game.id }}. {{ game.date_add|date:'M d, Y H:i' }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Количество раундов : {{game.num_rounds}}</p>
+                                <p class="card-text">Размер игры : {{game.max_num}}</p>
+                                <p class="card-text">Загаданное число: {{game.guess_num}}</p>
+                                {% if game.is_finished %}
+                                <p class="card-text text-success">ЗАКОНЧЕНА</p>
+                                {% else %}
+                                <p class="card-text text-danger">НЕ ЗАКОНЧЕНА</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br/>
+                    </li>
+                    <div><p></p></div>
+                    {% empty %}
+                    <li>Список пуст</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+

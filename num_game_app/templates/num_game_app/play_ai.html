@@ -1,0 +1,29 @@
+{% extends "num_game_app/base.html" %}
+
+{% block content %}
+<div class="card bg-dark text-light">
+    <div class="card-header"><h5>{{user.username.title}} задумал число...</h5></div>
+    <div class="card-body">
+        <p class="card-text">Ответ компьютера: </p>
+        <h3 class="nav-link">{{game.guess_num}}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="feedback">Ваш ответ:</label>
+            <select id="feedback" name="feedback">
+                <option value="меньше">Меньше</option>
+                <option value="больше">Больше</option>
+                <option value="угадал">Угадал</option>
+            </select>
+            <p class="navbar-brand">
+                <br/>
+                <button type="submit" class="btn btn-outline-success">
+                    Ответить
+                </button>
+            </p>
+        </form>
+        <p class="card-text text-muted"><small><small>
+            текущий ход: {{ game.num_rounds }}</small></small></p>
+    </div>
+</div>
+{% endblock content %}
+

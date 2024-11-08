@@ -1,0 +1,42 @@
+{% extends "num_game_app/base.html" %}
+
+{% block content %}
+<div class="card bg-dark text-light">
+    <div class="card-body">
+        <h5>Компьютер задумал число...</h5>
+        <br/>
+        {% if game.guess_num != NULL %}
+        <div>
+            <p class="card-text text-muted">
+                Ваш предыдущий ответ:
+                <big><big class="text-light">{{game.guess_num}}</big></big>
+            </p>
+            <p class="card-text text-muted">Ответ компьютера:
+                <big><big class="card-text text-success">{{game.answer}}</big></big></p>
+
+            <br/>
+            {% else %}
+            <p class="card-text">попробуй его отгадать: </p>
+            {% endif %}
+            <div class="text-muted">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="guess_num">Ваш ответ:</label>
+                    <input type="number"
+                           id="guess_num"
+                           name="guess_num"
+                           min="1"
+                           value=Null
+                           required>
+                    <br/><br/>
+                    <button type="submit" class="btn btn-outline-success">Отправить</button>
+                </form>
+            </div>
+            <br/>
+            <p class="card-text text-muted"><small><small>
+                Текущий ход: {{ game.num_rounds }}</small></small></p>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
